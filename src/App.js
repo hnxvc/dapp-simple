@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/Layout/Header'
+import Footer from './components/Layout/Footer'
+import Home from './views/Home'
+import { Router } from '@reach/router'
+import './App.css'
+import styled from 'styled-components'
+import CustomThemeProvider from './contexts/CustomThemeProvider'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledApp>
+      <Header />
+      <Router>
+        <Home path="/" />
+      </Router>
+      <Footer />
+    </StyledApp>
+  )
 }
 
-export default App;
+const WrapApp = () => {
+  return (
+    <CustomThemeProvider>
+      <App />
+    </CustomThemeProvider>
+  )
+}
+
+// Style
+const StyledApp = styled.section`
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
+`
+export default WrapApp
