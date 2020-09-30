@@ -3,7 +3,7 @@ const defaultTheme = {
   normalSize: 14,
   headingSize: 16,
   bingSize: 20,
-  radius: 8,
+  radius: 5,
   maxWidth: 1000,
 }
 
