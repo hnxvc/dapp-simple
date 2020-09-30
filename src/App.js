@@ -6,6 +6,7 @@ import { Router } from '@reach/router'
 import './App.css'
 import styled from 'styled-components'
 import CustomThemeProvider from './contexts/CustomThemeProvider'
+import ModalProvider from './contexts/ModalProvider'
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
 const WrapApp = () => {
   return (
     <CustomThemeProvider>
-      <App />
+      <ModalProvider>
+        <App />
+      </ModalProvider>
     </CustomThemeProvider>
   )
 }

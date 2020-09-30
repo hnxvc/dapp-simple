@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React from 'react'
 import Section from '../../components/Layout/Section'
 import Container from '../../components/Layout/Container'
 
 function Home() {
-  const themeContext = useContext(ThemeContext)
-  console.log(themeContext)
   return (
     <Container>
       <Section>
