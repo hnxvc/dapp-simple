@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import Container from '../Container'
 import styled from 'styled-components'
+import AccountButton from '../../AccountButton'
 
 function Header() {
   return (
@@ -9,9 +10,9 @@ function Header() {
       <StyledHeader>
         <StyledNav>
           <StyledNavItem to="/">Home</StyledNavItem>
-          <StyledNavItem to="/">Home</StyledNavItem>
-          <StyledNavItem to="/">Home</StyledNavItem>
+          <StyledNavItem to="/about">About</StyledNavItem>
         </StyledNav>
+        <AccountButton />
       </StyledHeader>
     </Container>
   )
@@ -20,6 +21,9 @@ function Header() {
 const StyledHeader = styled.section`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `
 
 const StyledNav = styled.nav`

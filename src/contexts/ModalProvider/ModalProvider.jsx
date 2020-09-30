@@ -8,7 +8,7 @@ export const ModalContext = createContext({
 
 function ModalProvider({ children }) {
 
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [modalContent, setModalContent] = useState('')
 
   const handlePresent = (modalContent) => {
@@ -16,16 +16,16 @@ function ModalProvider({ children }) {
     setModalContent(modalContent)
   }
 
-  const handleDisMiss = useCallback(() => {
+  const handleDismiss = useCallback(() => {
     setShowModal(false)
     setModalContent(null)
   }, [setShowModal, setModalContent])
 
   const handleEscape = useCallback((e) => {
     if (e.code === 'Escape') {
-      handleDisMiss()
+      handleDismiss()
     }
-  }, [handleDisMiss])
+  }, [handleDismiss])
 
   useEffect(() => {
     if (showModal) {
@@ -39,15 +39,17 @@ function ModalProvider({ children }) {
     <ModalContext.Provider
       value={{
         onPresent: handlePresent,
-        onDismiss: handleDisMiss
+        onDismiss: handleDismiss
       }}
     >
       {children}
       {
         showModal && <StyledWrapModal>
-          <StyledBackground onClick={handleDisMiss} />
+          <StyledBackground onClick={handleDismiss} />
           <StyledModal>
-            {modalContent} xxx
+          {React.isValidElement(modalContent) && React.cloneElement(modalContent, {
+            onDismiss: handleDismiss,
+          })}
           </StyledModal>
         </StyledWrapModal> 
       }
@@ -86,7 +88,7 @@ const StyledModal = styled.div`
   color: ${(props) => props.theme.textColor};
   margin: 0 auto;
   z-index: 3;
-  padding: 15px;
+  padding: 30px;
 `
 
 export default ModalProvider

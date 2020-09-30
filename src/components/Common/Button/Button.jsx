@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.theme.radius}px;
   background-color: ${(props) => props.theme.sectionColor};
   color: ${(props) => props.theme.hightLightColor};
-  padding: 7px 12px;
+  padding: 10px 12px;
   cursor: pointer;
   outline: none;
 
