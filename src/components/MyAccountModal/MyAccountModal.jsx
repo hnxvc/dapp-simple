@@ -24,7 +24,7 @@ function MyAccountModal({ onDismiss }) {
 
   return (
     <div>
-      <StyledTitle>My Account Modal</StyledTitle>
+      <StyledTitle>My Account</StyledTitle>
       <StyledBalance>
         <div className="token">ETH:</div>
         <div className="value">{getDisplayBalance(balance)}</div>

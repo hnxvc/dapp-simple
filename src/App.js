@@ -9,6 +9,8 @@ import CustomThemeProvider from './contexts/CustomThemeProvider'
 import ModalProvider from './contexts/ModalProvider'
 import { UseWalletProvider } from 'use-wallet'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { ToastContainer, Slide } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
@@ -39,6 +41,7 @@ const WrapApp = () => {
     >
       <CustomThemeProvider>
         <ModalProvider>
+          <ToastContainer position={'top-center'} transition={Slide} />
           <App />
         </ModalProvider>
       </CustomThemeProvider>
