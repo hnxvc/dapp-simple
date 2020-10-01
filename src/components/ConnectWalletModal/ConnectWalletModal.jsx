@@ -1,39 +1,44 @@
-import React, { useEffect } from "react";
-import { useWallet } from "use-wallet";
+import React, { useEffect } from 'react'
+import { useWallet } from 'use-wallet'
 import Button from '../../components/Common/Button'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import imgMetamask from '../../assets/img/metamask-fox.svg'
 import imgWallet from '../../assets/img/wallet-connect.svg'
 
 function ConnectWalletModal({ onDismiss }) {
-  const { connect, account } = useWallet();
+  const { connect, account } = useWallet()
 
   useEffect(() => {
     if (account) {
-      onDismiss();
+      onDismiss()
     }
-  }, [account, onDismiss]);
+  }, [account, onDismiss])
+
+  const handleConnectMetamask = () => {
+    localStorage.setItem('connectType', 'metamask')
+    connect('injected')
+  }
 
   return (
     <StyledWrapModal>
       <StyledTitle>Select a wallet provider.</StyledTitle>
       <StyledWrapCards>
         <StyledCard>
-          <img src={imgMetamask} alt="wallet"/>
+          <img src={imgMetamask} alt="wallet" />
           <h4>Meta mask</h4>
-          <Button onClick={() => connect("injected")}>Connect</Button>
+          <Button onClick={handleConnectMetamask}>Connect</Button>
         </StyledCard>
         <StyledCard>
-           <img src={imgWallet} alt="wallet"/>
+          <img src={imgWallet} alt="wallet" />
           <h4>Wallet Connect</h4>
-          <Button onClick={() => connect("walletconnect")}>Connect</Button>
+          <Button onClick={() => connect('walletconnect')}>Connect</Button>
         </StyledCard>
       </StyledWrapCards>
       <StyledCancel>
         <Button onClick={onDismiss}>Cancel</Button>
       </StyledCancel>
     </StyledWrapModal>
-  );
+  )
 }
 
 const StyledWrapModal = styled.div`
@@ -50,8 +55,8 @@ const StyledWrapCards = styled.div`
 `
 
 const StyledCard = styled.div`
-  border-radius: ${props => props.theme.radius}px;
-  border: 1px solid ${props => props.theme.sectionColor};
+  border-radius: ${(props) => props.theme.radius}px;
+  border: 1px solid ${(props) => props.theme.sectionColor};
   flex-basis: 50%;
   padding: 15px;
   display: flex;
@@ -80,4 +85,4 @@ const StyledCancel = styled.div`
   }
 `
 
-export default ConnectWalletModal;
+export default ConnectWalletModal
