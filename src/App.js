@@ -41,7 +41,7 @@ const WrapApp = () => {
     >
       <CustomThemeProvider>
         <ModalProvider>
-          <ToastContainer position={'top-center'} transition={Slide} />
+          <ToastContainer position={'bottom-left'} transition={Slide} />
           <App />
         </ModalProvider>
       </CustomThemeProvider>

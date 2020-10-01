@@ -59,7 +59,11 @@ function Demo() {
 
   const handleSendTransaction = async () => {
     try {
-      console.log('handleSendTransaction')
+      const TO = '0x94f59132d8422b636a0F511cF9EaDb7EEd540247'
+      const VALUE = 1000000000000000
+      const data = ''
+      const result = await sendTransaction(ethereum, account, TO, VALUE, data)
+      setResult(result)
     } catch (error) {
       toast.error(error.message)
     }
