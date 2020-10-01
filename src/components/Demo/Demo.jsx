@@ -68,16 +68,24 @@ function Demo() {
   return (
     <div>
       {account ? (
-        <StyledWrapBtn>
-          <Button onClick={handleSignMessage}>Sign</Button>
-          <Button onClick={handleSignPersonalMessage}>Personal Sign</Button>
-          <Button onClick={handleGetTotalSupplyEth}>
-            Get Total Supply USDT
-          </Button>
-          <Button onClick={handleGetBalance}>Get USDT Balance</Button>
-          <Button onClick={handleSendTransaction}>SendTransaction</Button>
-          {result}
-        </StyledWrapBtn>
+        <div>
+          <StyledTitle>Actions</StyledTitle>
+          <StyledWrapBtn>
+            <Button onClick={handleSignMessage}>Sign</Button>
+            <Button onClick={handleSignPersonalMessage}>Personal Sign</Button>
+            <Button onClick={handleGetTotalSupplyEth}>
+              Get Total Supply USDT
+            </Button>
+            <Button onClick={handleGetBalance}>Get USDT Balance</Button>
+            <Button onClick={handleSendTransaction}>SendTransaction</Button>
+          </StyledWrapBtn>
+          {result && (
+            <>
+              <StyledTitle>Result</StyledTitle>
+              <StyledResult>{result}</StyledResult>
+            </>
+          )}
+        </div>
       ) : (
         <StyledConnectBtn>
           <AccountButton />
@@ -87,7 +95,17 @@ function Demo() {
   )
 }
 
+const StyledTitle = styled.h2`
+  text-align: center;
+  margin-top: 5px;
+`
+
 const StyledWrapBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
   button {
     margin-right: 10px;
   }
@@ -95,6 +113,11 @@ const StyledWrapBtn = styled.div`
 
 const StyledConnectBtn = styled.div`
   text-align: center;
+`
+
+const StyledResult = styled.div`
+  text-align: center;
+  word-break: break-word;
 `
 
 export default Demo
