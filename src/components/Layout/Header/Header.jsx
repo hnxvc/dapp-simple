@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '@reach/router'
+import { NavLink } from 'react-router-dom'
 import Container from '../Container'
 import styled from 'styled-components'
 import AccountButton from '../../AccountButton'
@@ -9,8 +9,12 @@ function Header() {
     <Container>
       <StyledHeader>
         <StyledNav>
-          <StyledNavItem to="/">Home</StyledNavItem>
-          <StyledNavItem to="/about">About</StyledNavItem>
+          <StyledNavItem exact activeClassName="active" to="/">
+            Home
+          </StyledNavItem>
+          <StyledNavItem exact activeClassName="active" to="/about">
+            About
+          </StyledNavItem>
         </StyledNav>
         <AccountButton />
       </StyledHeader>
@@ -32,12 +36,13 @@ const StyledNav = styled.nav`
   padding-bottom: 10px;
 `
 
-const StyledNavItem = styled(Link)`
+const StyledNavItem = styled(NavLink)`
   color: ${(props) => props.theme.textColor};
   margin-right: 10px;
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &.active {
     color: ${(props) => props.theme.hightLightColor};
   }
 `
